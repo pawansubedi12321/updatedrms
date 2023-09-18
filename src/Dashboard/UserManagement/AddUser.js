@@ -9,18 +9,20 @@ import {Contextdata } from './Context';
 
 export default function AddUser() {
     const [page, setPage]= useState(0);
-    const[alldataofform,setalldataofform]=useState({});
+    let[alldataofform,setalldataofform]=useState({});
     const{text,settext,email,setemail,phone,setphone,age,setage,file,setfile,contact,setcontact,address,setaddress,password,setpassword,confirmpassword,setconfirmpassword,admin,setadmin,chef,setchef,chef1,setchef1}=useContext(Contextdata);
-   const[arrayofform,setarrayofform]=useState([]);
+   let[arrayofform,setarrayofform]=useState([]);
     const[storedarray,setstoredarray]=useState([]);
    const location=useLocation();
    let {storedata}=location.state||{};
+   console.log("heii l i am storeddata");
+   console.log(storedata);
+   console.log("end");
    useEffect(()=>{
     localStorage.setItem('arrayofform', JSON.stringify(arrayofform));
    })
     function NextButton() {
-        
-       // setalldataofform("");
+      
         
     
             setalldataofform({
@@ -39,16 +41,28 @@ export default function AddUser() {
         
             
         });
+        console.log("this is length");
+        try{
+           console.log( storedata.length)
+           console.log("end");
+        }
+        catch(e)
+        {
+
+        }
        
 
         if(page === FormTitle.length-1 ){
-            setarrayofform([...arrayofform,alldataofform]);
-            console.log('array of form');
-            console.log(arrayofform);
-            console.log("end");
-            console.log("alldataofform");
-            console.log(alldataofform);
-            console.log("End data");
+       
+           const updated=[{...alldataofform}];
+
+           arrayofform=[...updated,...storedata];
+            setarrayofform(arrayofform);
+        
+    
+            
+
+           
            
             alert("User Added Successfully");
             setalldataofform("");
@@ -64,17 +78,16 @@ export default function AddUser() {
             
         }else{
             
-        //     console.log("hello");
-        // console.log(admin);
-        // console.log("end");
+
             setPage((currPage) => currPage+1);
         }
-        console.log("this is array of form");
-        console.log(arrayofform);
-        console.log("end");
+        
         
         
   }
+  console.log("this is array of form");
+        console.log(arrayofform);
+        console.log("end");
 
   function PreviousButton() {
         setPage((currPage) => currPage-1);

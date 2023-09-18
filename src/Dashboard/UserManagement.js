@@ -11,7 +11,7 @@ export default function UserManagement() {
     // const {arrayofform} =useLocation();
     // console.log("hello location passed")
     // console.log(arrayofform);
-   //localStorage.clear();
+  // localStorage.clear();
     //localStorage.clear();
   return (
     <section className='container-fluid admin-bg p-4'>
