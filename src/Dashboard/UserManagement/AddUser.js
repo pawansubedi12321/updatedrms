@@ -8,15 +8,19 @@ import { Link,Location, useLocation } from 'react-router-dom';
 import {Contextdata } from './Context';
 
 export default function AddUser() {
+    let arrayofformdata;
     const [page, setPage]= useState(0);
+    const location=useLocation();
+    let {storedata,item}=location.state||{};
     let[alldataofform,setalldataofform]=useState({});
     const{text,settext,email,setemail,phone,setphone,age,setage,file,setfile,contact,setcontact,address,setaddress,password,setpassword,confirmpassword,setconfirmpassword,admin,setadmin,chef,setchef,chef1,setchef1}=useContext(Contextdata);
-   let[arrayofform,setarrayofform]=useState([]);
+   let[arrayofform,setarrayofform]=useState([...storedata]);
     const[storedarray,setstoredarray]=useState([]);
-   const location=useLocation();
-   let {storedata}=location.state||{};
-   console.log("heii l i am storeddata");
-   console.log(storedata);
+   
+  //  storedata={};
+    //arrayofform=[...storedata];
+   console.log("heii l i am item");
+   console.log(item);
    console.log("end");
    useEffect(()=>{
     localStorage.setItem('arrayofform', JSON.stringify(arrayofform));
@@ -41,40 +45,42 @@ export default function AddUser() {
         
             
         });
-        console.log("this is length");
-        try{
-           console.log( storedata.length)
-           console.log("end");
-        }
-        catch(e)
-        {
+        // console.log("this is length");
+        // try{
+        //    console.log( storedata.length)
+        //    console.log("end");
+        // }
+        // catch(e)
+        // {
 
-        }
+        // }
        
 
         if(page === FormTitle.length-1 ){
-       
-           const updated=[{...alldataofform}];
-
-           arrayofform=[...updated,...storedata];
-            setarrayofform(arrayofform);
-        
-    
             
+              
+                const updated=[{...alldataofform}];
 
+                arrayofform=[...updated,...storedata];
+                 //setarrayofform([...arrayofform,alldataofform]);
+                 setarrayofform(arrayofform)
+        
+               
+               
+                alert("User Added Successfully");
+                setalldataofform("");
+                settext("");
+                setemail("");
+                setphone("");
+                setage("");
+                setfile("");
+                setcontact("");
+                setaddress("");
+                setpassword("");
+                setconfirmpassword("");
+            
            
            
-            alert("User Added Successfully");
-            setalldataofform("");
-            settext("");
-            setemail("");
-            setphone("");
-            setage("");
-            setfile("");
-            setcontact("");
-            setaddress("");
-            setpassword("");
-            setconfirmpassword("");
             
         }else{
             

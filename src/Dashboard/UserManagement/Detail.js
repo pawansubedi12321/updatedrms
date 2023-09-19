@@ -44,11 +44,11 @@ export default function Detail() {
                                 <div className="col-md-6">
                                     <div class="mb-3 formbox">
                                         <label for="formGroupExampleInput" class="form-label">Name</label>
-                                        <input type="text" class="form-control"onChange={textdata} id="formGroupExampleInput" placeholder="Full Name"/>
+                                        <input type="text"defaultValue={text}class="form-control"onChange={textdata} id="formGroupExampleInput" placeholder="Full Name"/>
                                     </div>
                                     <div class="mb-3 formbox">
                                         <label for="formGroupExampleInput2" class="form-label">Email</label>
-                                        <input type="email"class="form-control"onChange={emaildata} id="formGroupExampleInput2" placeholder="example@gmail.com"/>
+                                        <input type="email"defaultValue={email}class="form-control"onChange={emaildata} id="formGroupExampleInput2" placeholder="example@gmail.com"/>
                                     </div>
                                     <div class="mb-3 formbox">
                                         <label for="formGroupExampleInput2" class="form-label">Phone</label>
