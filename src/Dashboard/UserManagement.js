@@ -1,18 +1,42 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SideBar from './SideBar'
 import Topbar from './Topbar'
 import { Link,Location, useLocation } from 'react-router-dom'
 
 export default function UserManagement() {
-    const storedata=JSON.parse(localStorage.getItem('arrayofform'));
+    const[items,setitems]=useState([]);
+    //let storedata;
+    
+       const storedata=JSON.parse(localStorage.getItem('arrayofform'));
+        //setitems(storedata);
+
+
+    
     console.log("hii i am localstorage");
-    //console.log(storedata);
+    //console.log(storedata)
+    //console.log(storedata[24]);
     console.log("end");
     // const {arrayofform} =useLocation();
     // console.log("hello location passed")
     // console.log(arrayofform);
  // localStorage.clear();
     //localStorage.clear();
+    const deletevalue=(index)=>{
+       // console.log("hii");
+       const datatodelete=[...storedata];
+       datatodelete.splice(index,1);
+       setitems(datatodelete);
+        console.log("data is");
+        console.log(datatodelete);
+        console.log("end");
+        localStorage.setItem('arrayofform', JSON.stringify(datatodelete));
+         //localStorage.setItem('datavalue', JSON.stringify(datatodelete));
+        
+
+    }
+    // console.log("this is item");
+    // console.log(item[1]);
+    // console.log("end");
   return (
     <section className='container-fluid admin-bg p-4'>
             <div className="row">
@@ -113,19 +137,24 @@ export default function UserManagement() {
                                                                 <td><img className='userprofileshow'defaultValue={item.file} src={item.file}alt="img"/></td>
                                                                 
                                                                 <td>
-                                                                <Link to='/add-user'state={{storedata,item}}>
+                                                                <Link to='/add-user'state={{storedata,item,index}}>
                                                                 <i className="fa-solid fa-pen mx-3 edit"></i>
-                                                                </Link>
-                                                                 <i class="fa-solid fa-trash delete"></i>
-                                                                </td>
-                                                               
+                                                                </Link >
                                                                 
+                                                                 <i class="fa-solid fa-trash delete"onClick={()=>deletevalue(index)}></i>
+                                                                </td>
+
+                                                         
                                                         
                                                         </tr>
                                                       ))
-                                                }
+                                                      
+                                                            }
                                     </tbody>
+                                    
                                     </table>
+                                    
+                                    
                                 
                                 </div>
                                 

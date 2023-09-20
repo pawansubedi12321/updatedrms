@@ -4,30 +4,47 @@ import {Contextdata } from './Context';
 export default function Detail() {
     const{text,settext,email,setemail,phone,setphone,age,setage,file,setfile,contact,setcontact,address,setaddress}=useContext(Contextdata);
     const location=useLocation();
-    let {storedata,item}=location.state||{};
+    let {storedata,item,index}=location.state||{};
     console.log("heii l i am item");
    console.log(item);
    console.log("end");
+   console.log("hei i am index");
+   console.log(index);
+   console.log("end");
    
-   const[edit,setedit]=useState('');
+   const[edittext,setedittext]=useState('');
+   const[editemail,seteditemail]=useState('');
+   console.log(" i am edit");
+   console.log(edittext);
+   console.log("end");
+    if(item && edittext==="")
+   {
+    
+    settext(item.text);
+    //setemail(item.email);
+    //setemail(item.email);
    
-//     if(item)
-//    {
-
-//     settext(item.text);
-   
-//        console.log(text);
-//    }
+       console.log(text);
+    
+   }
+   else
+   {
+    //item[index]=edittext
+   // item[index]=edittext
+    settext(edittext);
+    //setemail(editemail);
+   }
 
      // settext(item.text);
 
    
    
     const textdata=(e)=>{
-            
+        
      
             const data=e.target.value;
             settext(data);
+            setedittext(data);
           //  setedit(data);
             
         
@@ -39,6 +56,7 @@ export default function Detail() {
     const emaildata=(e)=>{
         const data=e.target.value;
         setemail(data);
+        seteditemail(data);
     }
     const phonedata=(e)=>{
         const data=e.target.value;

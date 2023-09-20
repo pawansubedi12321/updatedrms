@@ -11,15 +11,21 @@ export default function AddUser() {
     let arrayofformdata;
     const [page, setPage]= useState(0);
     const location=useLocation();
-    let {storedata}=location.state||{};
+    let {storedata,item,index}=location.state||{};
     let[alldataofform,setalldataofform]=useState({});
     const{text,settext,email,setemail,phone,setphone,age,setage,file,setfile,contact,setcontact,address,setaddress,password,setpassword,confirmpassword,setconfirmpassword,admin,setadmin,chef,setchef,chef1,setchef1}=useContext(Contextdata);
    let[arrayofform,setarrayofform]=useState([...storedata]);
-    const[storedarray,setstoredarray]=useState([]);
-   
+    //const[storedarray,setstoredarray]=useState([]);
+  
   //  storedata={};
     //arrayofform=[...storedata];
-   
+    // const location=useLocation();
+    // let {storedata,item,index}=location.state||{};
+    // console.log("this is item data");
+    // console.log(arrayofform[0]);
+    // console.log(arrayofform[1]);
+    // console.log(arrayofform[0]={text:"pawan"});
+    // console.log("end this data");
    useEffect(()=>{
     localStorage.setItem('arrayofform', JSON.stringify(arrayofform));
    })
@@ -49,11 +55,37 @@ export default function AddUser() {
         if(page === FormTitle.length-1 ){
             
               
-                const updated=[{...alldataofform}];
-
+                let updated=[{...alldataofform}];
+                console.log("this is updated");
+                console.log(updated);
+                console.log("end");
+                // if(item)
+        
+                // //item[index]=updated;
+                // arrayofform [index]=updated
+               
+                // setarrayofform(arrayofform)
+                // }
+                if(item)
+                {
+                   // const edit=Object.fromEntries(updated);
+                   //const edit=Object.fromEntries(updated);
+                   //const data=[{...updated}];
+                    console.log("hello i am edit");
+                    //console.log(data);
+                    console.log("end");
+                    arrayofform[index]=alldataofform;
+                    setarrayofform(arrayofform)
+                }
+                else
+                {
                 arrayofform=[...updated,...storedata];
+                setarrayofform(arrayofform)
+                }
+                
                  //setarrayofform([...arrayofform,alldataofform]);
-                 setarrayofform(arrayofform)
+                 
+                
         
                
                
@@ -80,7 +112,7 @@ export default function AddUser() {
 
             setPage((currPage) => currPage+1);
         }
-        
+    
         
         
   }
