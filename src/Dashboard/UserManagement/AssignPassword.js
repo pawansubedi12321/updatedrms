@@ -33,13 +33,13 @@ export default function AssignPassword() {
                 <div className="col-md-6">
                     <div class="mb-3 formbox">
                         <label for="formGroupExampleInput" class="form-label">Create Password</label>
-                        <input type="password"onChange={createpassworddata} class="form-control" id="formGroupExampleInput" placeholder="Enter Password"/>
+                        <input type="password"defaultValue={password}onChange={createpassworddata} class="form-control" id="formGroupExampleInput" placeholder="Enter Password"/>
                     </div>
                 </div>
                 <div className="col-md-6">
                     <div class="mb-3 formbox">
                         <label for="formGroupExampleInput2" class="form-label">Confirm Password</label>
-                        <input type="password"onChange={confirmpassworddata} class="form-control" id="formGroupExampleInput2" placeholder="Confirm Password"/>
+                        <input type="password"defaultValue={confirmpassword}onChange={confirmpassworddata} class="form-control" id="formGroupExampleInput2" placeholder="Confirm Password"/>
                     </div>
                 </div>
             </div>

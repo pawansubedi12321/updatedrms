@@ -40,7 +40,15 @@ export default function AssignRole({alldataofform,setalldataofform,arrayofform,s
       //  console.log("i am chef1");
 
     }
-    
+    console.log("admin");
+    console.log(admin);
+    console.log("end")
+    console.log("chef");
+    console.log(chef);
+    console.log("End");
+    console.log("chef1");
+    console.log(chef1);
+    console.log("end");
     //localStorage.setItem('datavalue', JSON.stringify(datavalue));
   return (
     <>
@@ -48,15 +56,15 @@ export default function AssignRole({alldataofform,setalldataofform,arrayofform,s
             <div className="row mt-4">
                 <div className="col-md-12">
                     <div class="form-check form-check-inline formbox">
-                        <input class="form-check-input"onChange={admindata} type="checkbox" id="inlineCheckbox1" value="option1"/>
+                        <input class="form-check-input"defaultChecked={admin}onChange={admindata} type="checkbox" id="inlineCheckbox1" value="option1"/>
                         <label class="form-check-label" for="inlineCheckbox1">Admin</label>
                     </div>
                     <div class="form-check form-check-inline formbox">
-                        <input class="form-check-input"onChange={chefdata} type="checkbox" id="inlineCheckbox2" value="option2"/>
+                        <input class="form-check-input"defaultChecked={chef}onChange={chefdata} type="checkbox" id="inlineCheckbox2" value="option2"/>
                         <label class="form-check-label" for="inlineCheckbox2">Chef</label>
                     </div>
                     <div class="form-check form-check-inline formbox">
-                        <input class="form-check-input"onChange={chef1data} type="checkbox" id="inlineCheckbox3" value="option3"/>
+                        <input class="form-check-input"defaultChecked={chef1}onChange={chef1data} type="checkbox" id="inlineCheckbox3" value="option3"/>
                         <label class="form-check-label"for="inlineCheckbox3">Chef 1</label>
                     </div>
                 </div>

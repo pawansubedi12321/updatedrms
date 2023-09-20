@@ -1,15 +1,38 @@
-import React,{useContext} from 'react'
-
+import React,{useContext, useEffect, useState} from 'react'
+import { Location,useLocation} from 'react-router-dom';
 import {Contextdata } from './Context';
 export default function Detail() {
     const{text,settext,email,setemail,phone,setphone,age,setage,file,setfile,contact,setcontact,address,setaddress}=useContext(Contextdata);
-    console.log("hey");
-    console.log(text);
-    console.log("end");
-    
+    const location=useLocation();
+    let {storedata,item}=location.state||{};
+    console.log("heii l i am item");
+   console.log(item);
+   console.log("end");
+   
+   const[edit,setedit]=useState('');
+   
+//     if(item)
+//    {
+
+//     settext(item.text);
+   
+//        console.log(text);
+//    }
+
+     // settext(item.text);
+
+   
+   
     const textdata=(e)=>{
-        const data=e.target.value;
-        settext(data);
+            
+     
+            const data=e.target.value;
+            settext(data);
+          //  setedit(data);
+            
+        
+        
+        
         //console.log(data);
 
     }
@@ -26,8 +49,10 @@ export default function Detail() {
         setage(data);
     }
     const filedata=(e)=>{
-        const data=e.target.value;
-        setfile(data);
+        const data=e.target.files[0];
+        const imageurl=window.URL.createObjectURL(data);
+        setfile(imageurl);;
+        //console.log(data);
     }
     const numberdata=(e)=>{
         const data=e.target.value;
@@ -37,6 +62,7 @@ export default function Detail() {
         const data=e.target.value;
         setaddress(data);
     }
+   
   return (
     <>
                         <form>
@@ -52,11 +78,11 @@ export default function Detail() {
                                     </div>
                                     <div class="mb-3 formbox">
                                         <label for="formGroupExampleInput2" class="form-label">Phone</label>
-                                        <input type="number"class="form-control"onChange={phonedata}  id="formGroupExampleInput2" placeholder="Enter Phone Number"/>
+                                        <input type="number"defaultValue={phone}class="form-control"onChange={phonedata}  id="formGroupExampleInput2" placeholder="Enter Phone Number"/>
                                     </div>
                                     <div class="mb-3 formbox">
                                         <label for="formGroupExampleInput2" class="form-label">Age</label>
-                                        <input type="text" class="form-control"onChange={agedata} id="formGroupExampleInput2" placeholder="Provide Age"/>
+                                        <input type="text"defaultValue={age}class="form-control"onChange={agedata} id="formGroupExampleInput2" placeholder="Provide Age"/>
                                     </div>
                                 </div>
                                 <div className="col-md-6">
@@ -64,14 +90,23 @@ export default function Detail() {
 
                                             <label for="formFile" class="form-label">Select Image</label>
                                             <input class="form-control"onChange={filedata}type="file"  id="formFile"/>
+                                            
+                                             
+                                           {file && 
+                                           <div>
+                                            <img className='userprofile'defaultValue={file}src={file}alt="images"/>
+                                            </div>} 
+
+
+
                                         </div>
                                         <div class="mb-3 formbox">
                                             <label for="formGroupExampleInput2" class="form-label">Contact Number</label>
-                                            <input type="number"onChange={numberdata} class="form-control" id="formGroupExampleInput2" placeholder="EnterContact Number"/>
+                                            <input type="number"defaultValue={contact}onChange={numberdata} class="form-control" id="formGroupExampleInput2" placeholder="EnterContact Number"/>
                                         </div>
                                     <div class="mb-3 formbox">
                                         <label for="formGroupExampleInput2" class="form-label">Address</label>
-                                        <input type="text" class="form-control"onChange={addressdata} id="formGroupExampleInput2" placeholder="Full Address"/>
+                                        <input type="text"defaultValue={address} class="form-control"onChange={addressdata} id="formGroupExampleInput2" placeholder="Full Address"/>
                                     </div>
                                 </div>
                                 {/* <div className="col-md-12">
